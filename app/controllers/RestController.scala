@@ -20,6 +20,8 @@ class RestController @Inject()(val authentication: AuthenticationModule,
                                client: ElasticClient,
                                restHistoryDAO: RestHistoryDAO) extends BaseController {
 
+  private val logger = Logger("application")
+
   def request = process { request =>
     val method = request.get("method")
     val path = request.get("path")
@@ -32,7 +34,7 @@ class RestController @Inject()(val authentication: AuthenticationModule,
         }.getOrElse("{}")
         val username = request.user.map(_.name).getOrElse("")
         Try(restHistoryDAO.save(RestRequest(path, method, bodyAsString, username, new Date(System.currentTimeMillis)))).recover {
-          case DAOException(msg, e) => Logger.error(msg, e)
+          case DAOException(msg, e) => logger.error(msg, e)
         }
         CerebroResponse(s.status, s.body)
 
@@ -45,7 +47,7 @@ class RestController @Inject()(val authentication: AuthenticationModule,
       case Success(status, body) =>
         val data = Json.obj(
           "mappings" -> ClusterMapping(body),
-          "host"    -> request.target.host
+          "host"    -> request.target.host.name
         )
         CerebroResponse(status, data)
 

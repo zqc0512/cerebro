@@ -128,7 +128,7 @@ First cerebro release.
 - display all index aliases on overview
 - improved error messages
 
-###v0.6.4 - March 30th, 2017
+### v0.6.4 - March 30th, 2017
 
 #### Bug fixes
 - use relative path for authentication action
@@ -147,7 +147,7 @@ First cerebro release.
 - updated known node types(included ingest, renamed client to coordinating)
 - support changing refresh interval
 
-###v0.6.6 - July 26th, 2017
+### v0.6.6 - July 26th, 2017
 
 #### Bug fixes
 - support non valid json requests through rest client
@@ -177,7 +177,7 @@ First cerebro release.
 #### New features
 - support flush index from cluster overview
 
-###v0.6.8 - September 30th, 2017
+### v0.6.8 - September 30th, 2017
 
 #### Bug fixes
 - fixed heading text on cat apis page
@@ -247,3 +247,24 @@ First cerebro release.
 
 #### Bug Fixes
 - Remove firefox specific rules incompatible with firefox Quantum #235
+
+### v0.8.2 - April 2nd, 2019
+
+#### Enhancements
+- Move docker file to its [own repo](https://github.com/lmenezes/cerebro-docker) #306
+- Add LDAP group search #307
+
+### v0.8.3 - April 5th, 2019
+
+#### Enhancements
+
+- Sbt configuration for creating rpm and deb packages #308
+- Fix markdown headers of CHANGES.md #328
+- Fix snapshot view for snapshot that contains `:` #351
+- Update scala and main libs to the latest versions #352
+- Travis CI integration #353
+- Stop logging sensible data #354
+
+#### Bug fixes
+
+- Show host in nodes overview #346 
